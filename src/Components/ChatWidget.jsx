@@ -64,7 +64,7 @@ const ChatWidget = () => {
 
       {/* Chat Box */}
       {isOpen && (
-        <div className='fixed bottom-20 sm:bottom-16 right-4 sm:right-5 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-xl w-[90%] sm:w-96 max-w-md z-50 border-2 border-purple-500'>
+        <div className='fixed bottom-20 sm:bottom-16 right-4 sm:right-5 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-xl w-[90%] max-w-md z-50 border-2 border-purple-500'>
           <div className='flex justify-between items-center mb-4'>
             <div className='text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white'>
               AI Chat
