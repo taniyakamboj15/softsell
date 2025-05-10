@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { FiMessageCircle } from "react-icons/fi";
-import mockResponses from "../constants/consntant";
 import openai from "../utils/openai";
+import { FaTimesCircle } from "react-icons/fa";
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +51,6 @@ const ChatWidget = () => {
 
   return (
     <>
-      {/* Floating Chat Icon */}
       <motion.div
         className='fixed bottom-5 right-5 bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-4 rounded-full shadow-lg cursor-pointer z-50 hover:scale-110 transition-transform duration-200'
         onClick={() => setIsOpen(!isOpen)}
@@ -62,9 +61,24 @@ const ChatWidget = () => {
         <FiMessageCircle size={30} />
       </motion.div>
 
-      {/* Chat Box */}
       {isOpen && (
-        <div className='fixed bottom-20 sm:bottom-16 right-4 sm:right-5 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-xl w-[90%] max-w-md z-50 border-2 border-purple-500'>
+        <div
+          className='
+  fixed 
+  bottom-20 sm:bottom-16 
+  right-4 sm:right-5 
+  bg-white dark:bg-gray-800 
+  p-4 sm:p-6 
+  rounded-xl shadow-xl 
+  w-[75%] md:w-[90%] max-w-md 
+  max-h-[80vh] 
+  overflow-hidden 
+  z-50 
+  border-2 border-purple-500
+  flex flex-col
+  
+'
+        >
           <div className='flex justify-between items-center mb-4'>
             <div className='text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white'>
               AI Chat
@@ -73,11 +87,11 @@ const ChatWidget = () => {
               className='text-xl text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white'
               onClick={() => setIsOpen(false)}
             >
-              ✕
+              <FaTimesCircle />
             </button>
           </div>
 
-          <div className='space-y-4 h-[60vh] overflow-y-auto p-2'>
+          <div className='space-y-4 h-[40vh]  md:h-[50vh] overflow-y-auto p-2'>
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -105,6 +119,11 @@ const ChatWidget = () => {
               onChange={(e) => setUserInput(e.target.value)}
               className='w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 dark:text-white'
               placeholder='Ask something...'
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSendMessage();
+                }
+              }}
             />
             <motion.button
               className='sm:ml-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:bg-purple-700 text-white p-3 rounded-lg w-full sm:w-auto'
