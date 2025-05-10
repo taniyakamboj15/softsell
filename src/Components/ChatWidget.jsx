@@ -64,20 +64,20 @@ const ChatWidget = () => {
 
       {/* Chat Box */}
       {isOpen && (
-        <div className='fixed bottom-16 right-5 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-xl w-96 max-w-md z-50 border-2 border-purple-500'>
+        <div className='fixed bottom-20 sm:bottom-16 right-4 sm:right-5 bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-xl shadow-xl w-[90%] sm:w-96 max-w-md z-50 border-2 border-purple-500'>
           <div className='flex justify-between items-center mb-4'>
-            <div className='text-2xl font-semibold text-gray-900 dark:text-white'>
+            <div className='text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white'>
               AI Chat
             </div>
             <button
-              className='text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white'
+              className='text-xl text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white'
               onClick={() => setIsOpen(false)}
             >
-              X
+              ✕
             </button>
           </div>
 
-          <div className='space-y-4 h-72 overflow-y-auto p-2'>
+          <div className='space-y-4 h-[60vh] overflow-y-auto p-2'>
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -86,7 +86,7 @@ const ChatWidget = () => {
                 }`}
               >
                 <div
-                  className={`p-4 rounded-lg shadow-md max-w-xs ${
+                  className={`p-3 sm:p-4 rounded-lg shadow-md max-w-[80%] ${
                     message.sender === "user"
                       ? "bg-blue-500 text-white"
                       : "bg-gray-100 text-gray-900 dark:bg-gray-700 dark:text-white"
@@ -98,7 +98,7 @@ const ChatWidget = () => {
             ))}
           </div>
 
-          <div className='flex mt-4'>
+          <div className='flex mt-4 flex-col sm:flex-row gap-2 sm:gap-0'>
             <input
               type='text'
               value={userInput}
@@ -107,7 +107,7 @@ const ChatWidget = () => {
               placeholder='Ask something...'
             />
             <motion.button
-              className='ml-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:bg-purple-700 text-white  p-3 rounded-lg'
+              className='sm:ml-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:bg-purple-700 text-white p-3 rounded-lg w-full sm:w-auto'
               onClick={handleSendMessage}
               disabled={loading}
               initial={{ opacity: 0 }}
